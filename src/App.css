@@ -17,92 +17,67 @@
   background: #555;
 }
 :root {
-  --blue: #00ccff;
+  /* --blue: #00ccff; */
   --white: #ffffff;
-  --green:#00a964;
+  --green:#7be1e5;
   --para:#999999;
   --text:#00001a;
+  --blue:#6851d7;
 }
 .main-container{
-  width: 100%;
-  height: 100vh;
+  flex:1;
+  box-sizing: border-box;
+  height:100vh;
   display: flex;
 }
 .sidebar{
-   flex: 1;
+   width: 100px;
    background-color: var(--blue);
-   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   height:100%;
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   /* justify-content: space-evenly; */
 }
-/* .sidebar:hover{
-  flex: 1;
-  background-color: var(--blue);
-  box-shadow: 2px 2px 9px gray;
-} */
-.main-home{
-  flex: 6;
+
+.sidebar:hover{
+  flex:1;
 }
-/* .logo{
-  float: right;
-} */
 .logo{
   text-align: center;
-  color:var(--green);
+  color:var(--white);
   font-weight: bold;
 }
 .logo img{
   width: 100px;
   height: 100px;
 }
-.sidebar-menu{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-}
-.sidebar-menu-span{
-    color: white;
-   font-weight: bold;
-   font-size: 21px;
-   padding: 10px 30px;
-   margin: 20px 0;
-   border-radius: 3px;
-   cursor: pointer;
-}
-.sidebar-menu span:hover{
-  color: var(--blue);
-  background: var(--white);
-}
-.active-sidebar{
-  color: var(--blue);
-  background: var(--white);
-  padding: 10px 30px;
-  border-radius: 3px;
-}
 .hi img{
  width: 40px;
  height: 40px;
 }
 .main-home{
+  flex:5;
   padding: 20px;
 }
 .normal{
-  padding: 10px;
+  padding: 10px 40px;
   border-radius: 3px;
   background-color: var(--white);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px; */
+  
   border-radius: 3px;
   width: 100%;
 }
 .helpdesk{
-   /* width: 98%; 
-   height: 100%; 
-   overflow-y: scroll;
-   display:flex;
-   flex: column; */
-   
-   height: 96vh;
-   overflow-x: scroll;
-  
+  height: 96vh;
+   /* overflow-x: scroll; */
+   width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .helpdesk-banner{
   /* width: 100%;  */
@@ -139,7 +114,7 @@
   font-size: 40px;
   padding: 7px 15px;
   border-radius: 40px;
-  background:rgb(0, 204, 255,.5);
+  background:#f67568;
   color: var(--white);
   /* border:1px solid var(--green) */
 }
@@ -154,30 +129,46 @@
 .Specialities{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly; 
 }
 .Specialities-card{
-  border-radius: 3px;
+  border-radius: 10px;
   padding:20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   align-items: center;
   margin-top: 20px;
+  text-align: center;
 }
 .Specialities-card img{
-  width:100px;
-  height:100px;
+  width:130px;
+  height:130px;
   border-radius: 360px;
   padding: 0 10px 0 0;
+ text-align: center;
+ margin: 20px;
+ padding: 10px;
+ box-shadow: #e7f0ff 0px 54px 55px, #e7f0ff 0px -12px 30px, #e7f0ff 0px 4px 6px, #e7f0ff 0px 12px 13px,#e7f0ff 0px -3px 5px;
+ 
 }
 .Specialities-card button{
   outline: none;
   border: none;
-  width: 100%;
+  width: 49%;
   padding: 15px;
-  background-color: var(--blue);
+  /* background-color: var(--blue); */
   border-radius: 5px;
-  color: var(--white);
+  color: var(--blue);
   margin-top: 10px;
+  cursor: pointer;
+}
+.cat-doc{
+  margin: 20px 0px;
+  border-radius: 10px;
+  
+  font-size: 20px;
+  font-weight: bold;
+  
+  
 }
 .Specialities-card h5{
    font-size: 26px;
@@ -187,8 +178,131 @@
 }
 .Specialities-card h6{
   font-size: 16px;
-  margin: 0 0 0px 0;
+  margin: 10px 0 0px 0;
   color:var(--para);
   font-weight: 600;
 
+}
+/* ------------------------side bar code */
+.sidebar-menu{
+   display: flex;
+   flex-direction: column;
+   /* padding: 0 20px; */
+   align-items: center;
+   
+}
+.text-sidebar-menu{
+  display: none;
+  font-size: 19px;
+  margin-left: 7px;
+  font-weight: 200;
+}
+.sidebar:hover .text-sidebar-menu{
+   display: block;
+}
+.sidebar-menu-span{
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px;
+  align-items: center;
+  color: white;
+  margin: 20px 0;
+}
+.active-sidebar{
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px;
+  align-items: center;
+  border-radius: 5px;
+  color: var(--blue);
+  background:white;
+  margin: 20px 0;
+}
+.font-sidebar-menu{
+  font-size: 20px;
+  font-weight:bold ;
+}
+.dev-logo{
+  position: absolute;
+  bottom: 0;
+  background:var(--white);
+  text-align: center;
+  padding: 15px 0;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+}
+
+/* -------------------------------search bar */
+.doctor-search-bar{
+  display: block;
+   margin-right: 100px;
+}
+.doctor-search-bar{
+   padding: 15px 20px;
+   width: 30%;
+   border-radius: 10px;
+   justify-content: space-between;
+   margin: 20px 100px;
+   box-shadow: #e7f0ff 0px 54px 55px, #e7f0ff 0px -12px 30px, #e7f0ff 0px 4px 6px, #e7f0ff 0px 12px 13px,#e7f0ff 0px -3px 5px;
+}
+.doctor-search-bar input[type=text]{
+   border: none;
+   outline: none;
+   width: 90%;
+}
+.catagory-tabs{
+   width: 90%;
+   display: flex;
+   flex-direction: row;
+
+   border-radius: 50px;
+   box-shadow: #e7f0ff 0px 4px 5px, #e7f0ff 0px -12px 30px, #e7f0ff 0px 4px 6px, #e7f0ff 0px 12px 13px,#e7f0ff 0px -3px 5px;
+}
+.catagory-tab{
+  color: var(--blue);
+  padding: 16px 30px;
+  font-weight: 600;
+  border-radius: 50px;
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.catagory-tab-active{
+ 
+  padding: 16px 30px;
+  font-weight: 600;
+  border-radius: 50px;
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  background: var(--blue);
+  color: var(--white);
+}
+.right-arrow-btn{
+  outline: none;
+  border: none;
+  border: none;
+  color: var(--blue);
+  padding: 10px 20px;
+  border-radius: 10px;
+  /* background: #7be1e5; */
+  font-size: 30px;
+}
+.loader{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+.loader img{
+  padding: 10px;
+  border-radius: 360px;
+  width: 200px;
+  /* box-shadow: #e7f0ff 0px 54px 55px, #e7f0ff 0px -12px 30px, #e7f0ff 0px 4px 6px, #e7f0ff 0px 12px 13px,#e7f0ff 0px -3px 5px; */
 }

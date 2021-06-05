@@ -1,8 +1,30 @@
 import React, { Component } from 'react'
-
+import { Redirect } from 'react-router-dom';
 export default class Sidebar extends Component {
     // const { menuId,setMenuId} =this.props
+    constructor(props){
+      super(props)
+        this.state = {
+          logout:false
+        }
+       
+      
+    }
+    componentWillMount(){
+      let token = localStorage.getItem("projectToken")
+      if(token){
+        this.setState({logout:true})
+      }
+    }
+   logOut(){
+      localStorage.removeItem("projectToken")
+      this.setState({logout:false})
+    }
     render() {
+      if (this.state.logout==false) {
+        return <Redirect to='/' />
+      }
+   else {
         return (
             <div className="sidebar">
             <span class="logo">
@@ -39,7 +61,14 @@ export default class Sidebar extends Component {
             <div className="dev-logo">
               Soft Techno
             </div>
+            {
+              this.state.logout &&
+              <div className="logout" onClick={() => this.logOut()}>
+              logout
+            </div>
+            }
          </div>
         )
     }
+  }
 }

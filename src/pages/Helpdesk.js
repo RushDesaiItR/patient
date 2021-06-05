@@ -2,28 +2,23 @@ import React from 'react'
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import Doctors from "../components/Doctors"
 
-export default function Helpdesk({setMenuId}) {
+export default function Helpdesk({setMenuId, sendDataForm}) {
    const [tab, setTab]=React.useState(0)
     return (
         <div className="helpdesk">
       
            <div className="helpdesk-banner2 normal">
-           <h3>Sehat Apki 
+        
+           <div className="helpdesk-banner">
+             <div>
+             <h3>Sehat Apki 
                    <br/>
                    <span style={{fontSize: "70px"}}>
                      Sath Hamara
                    </span>
                </h3>
-               <a href="https://webinar-webrtc-siom-network.herokuapp.com?id=1234">Go</a>
-               <form action="https://webinar-webrtc-siom-network.herokuapp.com">
-                <input type="hidden" name="id" value="3644"/>
-                <button  type="submit">
-                Connect
-               </button>
-              </form>
-           <div className="helpdesk-banner">
-             <div>
-              
+               
+             
 
                <div className="helpdesk-banner-list">
                     <h1><i class="fa fa-user-md" aria-hidden="true"></i></h1> 
@@ -46,16 +41,18 @@ export default function Helpdesk({setMenuId}) {
                        <span>Ambulance Service</span>
                    </div>
                </div>
+              
              </div>
              
-               <img src="https://www.freevector.com/uploads/vector/preview/30913/doctor_man_Mesa_de_trabajo_1.jpg"/>
+             <img style={{width:"600px",height:"600px"}} 
+               src="http://www.pngplay.com/wp-content/uploads/7/Doctor-Nurse-PNG-Clipart-Background.png"/>
             
            </div>
            </div>
 
          <br/><br/>
 
-           <div className="helpdesk-banner2 normal">
+           {/* <div className="helpdesk-banner3 normal">
                <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
                  <span style={{fontSize:"30px", fontWeight:"bolder"}}>Doctors</span> 
                  <div className="doctor-search-bar" >
@@ -75,29 +72,10 @@ export default function Helpdesk({setMenuId}) {
                    <button className={tab == 8 ?"catagory-tab-active":"catagory-tab "} onClick={()=>setTab(8)}>Gynecologist</button>
                    <button className={tab == 9 ?"catagory-tab-active":"catagory-tab "} onClick={()=>setTab(9)}>Gynecologist</button>
                </div>
-               {
-                  tab==0 &&  <Doctors setMenuId={setMenuId}/>
-               }
-                {
-                  tab==1 && 
-                  <center>
-                     <img style={{width:"300px"}} src="https://banner2.cleanpng.com/20180222/ude/kisspng-physician-dentist-patient-vector-cartoon-doctor-to-the-patient-to-see-the-te-5a8ebd4e920f87.5892211215193040145983.jpg"/>
-                     <h6>No Doctors Yet</h6>
-                  </center>
-               }
-               {
-                  tab==2 &&  <h1>jjj</h1>
-               }
-                {
-                  tab==3 &&   <h1>jjj</h1>
-               }
-                {
-                  tab==4 &&   <h1>jjj</h1>
-               }
-               {
-                  tab==5 &&   <h1>jjj</h1>
-               }
-           </div>
+             
+               <Doctors sendDataForm={sendDataForm} setMenuId={setMenuId}/>
+           </div> */}
+            <Doctors sendDataForm={sendDataForm} setMenuId={setMenuId}/>
         </div>
     )
 }

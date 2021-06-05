@@ -6,9 +6,34 @@ import Covid from './pages/Covid';
 import Sidebar from './components/Sidebar';
 import Connect from "./pages/Connect"
 import Loader from "./components/Loader"
+import GenralCheck from "./pages/GenralCheck"
+import Form from"./pages/Form"
+import Medicine from"./pages/Medicine"
+import Feedback from"./components/Feedback"
 export default function Home() {
     const [menuId, setMenuId]=React.useState(0)
     const [loader, setLoader]=React.useState(true)
+    const [childData, setChildData]=React.useState([])
+    const [loggedIn, setLoggedIn]=React.useState(false)
+    const [feedback, setFeedback]=React.useState(false)
+    const [link, setLink]=React.useState()
+    const sendDataForm=(data)=>{
+      setChildData(data)
+      setMenuId(4)
+    }
+   React.useEffect(()=>{
+    const token =  localStorage.getItem("link");
+    
+    const time=localStorage.getItem("time");
+    const date=localStorage.getItem("date");
+    if (token) {
+      setLink(token)
+      setLoggedIn(true)
+    }
+    else {
+      setLoggedIn(false)
+    }
+   })
     setTimeout(()=>{
       setLoader(false)
     }, 2000)
@@ -17,14 +42,16 @@ export default function Home() {
          {
            loader ? <Loader/>
            :
+
            <div className="main-container">
             <Sidebar menuId={menuId} setMenuId={setMenuId}/>
+          
             <div className="main-home">
                {
                  menuId == 0 &&
                  (
                    <>
-                   <Helpdesk  menuId={menuId} setMenuId={setMenuId}/>
+                   <Helpdesk sendDataForm={sendDataForm}  menuId={menuId} setMenuId={setMenuId}/>
                    </>
                  )
                }
@@ -33,7 +60,7 @@ export default function Home() {
                  (
                    
                    <>
-                    <h1>Medicine</h1>
+                    <Medicine/>
                    </>
                  )
                }
@@ -49,7 +76,7 @@ export default function Home() {
                  menuId == 3 &&
                  (
                    <>
-                    <h1>General Check</h1>
+                    <GenralCheck/>
                    </>
                  )
                }
@@ -57,7 +84,7 @@ export default function Home() {
                  menuId == 4 &&
                  (
                    <>
-                    <h1>Form</h1>
+                    <Form childData={childData}/>
                    </>
                  )
                }
@@ -70,7 +97,41 @@ export default function Home() {
                  )
                }
             </div>
+            {
+            
+              loggedIn && <div className={"oppintment-card"}>
+                 <div className="oppintment-card-inner">
+                 <i class="fa fa-video-camera" aria-hidden="true"></i>
+                    <div>
+                       <h3>Your Oppointment</h3>
+                       {/* <form action="http://localhost:7000/">
+                         <input type="text" value={link}/>
+                          <button type="submit">Start</button>
+                       </form> */}
+                      <a class="oppintment-card-button" href={`https://webinar-webrtc-siom-network.herokuapp.com/?name=${link}`}>Connect</a>
+                    </div>
+                 </div>
+              </div>
+              
+             
+            }
+            <>
+               <div class="feedback-btn" onClick={()=>{setFeedback(!feedback)}}>
+                  <i class="fa fa-comments" aria-hidden="true"></i>
+              </div>  
+               {
+                 feedback && (
+                 
+                  <div class="feedback-form">
+                      
+                       <Feedback/>
+                 </div> 
+                 )
+               }
+             </>  
+        
          </div>
+       
 
          }
         </>

@@ -45,7 +45,7 @@ export default class Register extends Component {
                   })
                  
                   if (res.data.message =="success") {
-                     console.log(res) 
+                    
                     this.setState({ description: "Log In", message: "Log In Successfull", type: "success" })
                     this.setState({ alert: true })
                    
@@ -54,7 +54,7 @@ export default class Register extends Component {
                 }
 
                   else{
-                    console.log(res) 
+                   
                     this.setState({ description: "Some Thing Went Wrong", message: "Password Or Email Invalid", type: "error" })
                     this.setState({ alert: true })
                   }

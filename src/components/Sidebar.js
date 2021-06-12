@@ -57,6 +57,10 @@ export default class Sidebar extends Component {
                    <i class="fa fa-address-card-o font-sidebar-menu" aria-hidden="true"></i> 
                    <span className="text-sidebar-menu">Genral Check</span>
                    </span>
+                   <span className={ this.props.menuId == 4 ? "active-sidebar" :  'sidebar-menu-span' } onClick={()=>this.props.setMenuId(6)} >
+                   <i class="fa fa-user" aria-hidden="true"></i>
+                   <span className="text-sidebar-menu">Profile</span>
+                   </span>
             </div>
             <div className="dev-logo">
               Soft Techno

@@ -8,6 +8,7 @@ import Connect from "./pages/Connect"
 import Loader from "./components/Loader"
 import GenralCheck from "./pages/GenralCheck"
 import Form from"./pages/Form"
+import User from"./pages/User"
 import Medicine from"./pages/Medicine"
 import Feedback from"./components/Feedback"
 export default function Home() {
@@ -93,6 +94,14 @@ export default function Home() {
                  (
                    <>
                     <Connect setMenuId={setMenuId}/>
+                   </>
+                 )
+               }
+                {
+                 menuId == 6 &&
+                 (
+                   <>
+                     <User setMenuId={setMenuId}/>
                    </>
                  )
                }

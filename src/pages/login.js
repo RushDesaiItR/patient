@@ -37,27 +37,26 @@ export default class Register extends Component {
                    const res = await axios({
                     method: 'post',
                  //   url: 'https://shrouded-scrubland-67974.herokuapp.com/patients-login',
-                  url:"https://shrouded-scrubland-67974.herokuapp.com/patients-login",
+                  url:"http://localhost:3800/patients-login",
                     data:{
                        email,
                        password
                     }
                   })
-                 
-                  if (res.data.message =="success") {
-                    
-                    this.setState({ description: "Log In", message: "Log In Successfull", type: "success" })
-                    this.setState({ alert: true })
-                   
-                    localStorage.setItem("projectToken","tokenprj")
-                    this.props.history.push('/home');
-                }
+                      console.log(res.data.data[0].firstName , res.data.data[0].lastName)
+                   if (res.data.message =="success") {
+                      this.setState({ description: "Log In", message: "Log In Successfull", type: "success" })
+                      this.setState({ alert: true })
+                      localStorage.setItem("projectToken",res.data.data[0].firstName +" "+res.data.data[0].lastName)
+                      console.log(localStorage.getItem("projectToken"))
+                     this.props.history.push('/home');
+                 }
 
-                  else{
+                   else{
                    
-                    this.setState({ description: "Some Thing Went Wrong", message: "Password Or Email Invalid", type: "error" })
-                    this.setState({ alert: true })
-                  }
+                     this.setState({ description: "Some Thing Went Wrong", message: "Password Or Email Invalid", type: "error" })
+                     this.setState({ alert: true })
+                   }
            
         }
         setTimeout(() => {

@@ -91,7 +91,9 @@ export default class Medicine extends Component {
                                                         <h4>{item.des}</h4>
 
                                                     </div>
-                                                    <button onClick={() => this.addToCart(item)} className="medicine-card-btn">Buy</button>
+                                                    <button onClick={() => this.addToCart(item)} className="medicine-card-btn">
+                                                    Add To Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    </button>
                                                 </div>
                                             ))
                                         }

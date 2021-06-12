@@ -56,7 +56,8 @@ export default function FullWidthGrid({ childData }) {
     const headers = {
       "Content-Type": "application/json"
     }
-    return fetch(`https://shrouded-scrubland-67974.herokuapp.com/payment`, {
+    return fetch(`https://shrouded-scrubland-67974.herokuapp.com
+                 /payment`, {
       method: "POST",
       headers,
       body: JSON.stringify(body)

@@ -36,7 +36,8 @@ export default class Register extends Component {
             {
                    const res = await axios({
                     method: 'post',
-                    url: 'https://shrouded-scrubland-67974.herokuapp.com/patients-login',
+                 //   url: 'https://shrouded-scrubland-67974.herokuapp.com/patients-login',
+                  url:"https://shrouded-scrubland-67974.herokuapp.com/patients-login",
                     data:{
                        email,
                        password
@@ -44,14 +45,16 @@ export default class Register extends Component {
                   })
                  
                   if (res.data.message =="success") {
-                      
+                     console.log(res) 
                     this.setState({ description: "Log In", message: "Log In Successfull", type: "success" })
                     this.setState({ alert: true })
                    
                     localStorage.setItem("projectToken","tokenprj")
                     this.props.history.push('/home');
                 }
+
                   else{
+                    console.log(res) 
                     this.setState({ description: "Some Thing Went Wrong", message: "Password Or Email Invalid", type: "error" })
                     this.setState({ alert: true })
                   }

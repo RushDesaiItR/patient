@@ -37,18 +37,20 @@ export default class Register extends Component {
                    const res = await axios({
                     method: 'post',
                  //   url: 'https://shrouded-scrubland-67974.herokuapp.com/patients-login',
-                  url:"http://localhost:3800/patients-login",
+                  url:"https://shrouded-scrubland-67974.herokuapp.com/patients-login",
                     data:{
                        email,
                        password
                     }
                   })
-                      console.log(res.data.data[0].firstName , res.data.data[0].lastName)
+                    console.log(res)
                    if (res.data.message =="success") {
                       this.setState({ description: "Log In", message: "Log In Successfull", type: "success" })
                       this.setState({ alert: true })
                       localStorage.setItem("projectToken",res.data.data[0].firstName +" "+res.data.data[0].lastName)
-                      console.log(localStorage.getItem("projectToken"))
+                      localStorage.setItem("firstName",res.data.data[0].firstName)
+                      localStorage.setItem("lastName",res.data.data[0].lastName)
+                      
                      this.props.history.push('/home');
                  }
 

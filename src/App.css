@@ -1005,3 +1005,12 @@
 .form-feedback{
   padding:10px;
 }
+.user-profile img{
+  width: 120px;
+  height: 120px;
+  border-radius: 365%;
+  background-color: red;
+}
+.user-profile{
+  justify-content: space-;
+}

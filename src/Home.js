@@ -112,7 +112,7 @@ export default function Home() {
                  <div className="oppintment-card-inner">
                  <i class="fa fa-video-camera" aria-hidden="true"></i>
                     <div>
-                       <h3>Your Oppointment</h3>
+                       <h3>Your Appointment</h3>
                        {/* <form action="http://localhost:7000/">
                          <input type="text" value={link}/>
                           <button type="submit">Start</button>

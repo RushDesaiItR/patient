@@ -8,6 +8,8 @@ const  User=()=>{
     const [userData, setUserData]=React.useState([])
     const [loader, setLoader]=React.useState(true)
     const [setApt,  setAptData]=React.useState([])
+    const[aptLoader,setAptLoader]=React.useState(true)
+    const[btnLoader,setBtnLoader]=React.useState(false)
     // socket = io("localhost:7000")
     // const sendMsg = ()=>{
     //     let msg ={
@@ -45,12 +47,28 @@ const  User=()=>{
                      fullName:token
                   }
             })
-            setAptData(resApt)
-        
+           
+            setAptData(resApt.data[0])
+            
+            // if(setApt){
+            //     setAptLoader(false)
+            //  }
 
     }
+    const deleteApt = async() =>{
+        let firstName = localStorage.getItem("firstName")
+        let lastName = localStorage.getItem("lastName")
+        setBtnLoader(true)
+        const resApt = await axios({
+            method: 'delete',
+            url: `https://shrouded-scrubland-67974.herokuapp.com/user-data-patient/${firstName+" "+lastName }`,
+           
+          })
+          setBtnLoader(false)
+          setAptData(null)
+    }
     if(loader){
-       return ( <h2>Loading.....</h2> )
+       return ( <Loader/> )
     }
     else
     {
@@ -71,19 +89,27 @@ const  User=()=>{
                        </div>
                     
                    {
-                       setApt.length == 0 ? (
-                           <h2>Not Appointment</h2>
+                       setApt == null ? (
+                           <h2 style={{marginTop:"20px"}}>Not Appointment</h2>
                        )
                        :
                        <>
-                        <div>
+                        <div style={{alignSelf:"flex-end"}}>
                            <h2>Your appointment</h2>
                            <h3>Doctor Name:- Rushikesh Desai</h3>
-                            <h4>Contact: 989898765</h4>
-                            <h4>Email: rmd@gmail.com</h4>
-                            <h4>Date:{setApt.date}</h4>
-                            <h4>Time :{setApt.time}</h4>
-                            <button><i class="fa fa-trash" aria-hidden="true"></i> Appointment</button>
+                            <h4>Date:{setApt.Date}</h4>
+                            <h4>Time :{setApt.Time}</h4>
+                            {
+                                btnLoader ?
+                                <button className="btndanger" disabled>
+                                   Removing.......
+                                </button>
+                                :
+                                <button className="btndanger" onClick={()=>deleteApt()}>
+                                <i class="fa fa-trash" aria-hidden="true"></i> Appointment
+                                </button>
+                            }
+
                         </div>
                        </>
                       

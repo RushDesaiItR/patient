@@ -316,15 +316,18 @@
   left: 0;
   right: 0;
   font-weight: bold;
+  cursor: pointer;
+  color: #6851d7;
 }
 .logout{
   position: absolute;
   bottom: 50px;
-  background:var(--white);
+  color:var(--white);
   text-align: center;
-  padding: 15px 0;
+  padding: 5px 0;
   left: 0;
   right: 0;
+  cursor: pointer;
   font-weight: bold;
 }
 /* -------------------------------search bar */
@@ -1013,4 +1016,16 @@
 }
 .user-profile{
   justify-content: space-;
+}
+.btndanger{
+  outline: none;
+  border: none;
+  background:red ;
+  padding: 10px 15px;
+  border-radius: 3px;
+  color: white;
+  font-size: 17px;
+  font-weight: 400;
+  cursor: pointer;
+
 }

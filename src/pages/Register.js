@@ -139,7 +139,10 @@ export default class Register extends Component {
 
                     this.setState({ description: "Registred", message: "Registred Successfull", type: "success" })
                     this.setState({ alert: true })
-                    localStorage.setItem("projectToken","tokenprj")
+                    localStorage.setItem("projectToken",this.state.firstName +" "+this.state.lastName)
+                    localStorage.setItem("firstName",this.state.firstName)
+                    localStorage.setItem("lastName",this.state.lastName)
+                    localStorage.setItem("email",this.state.email )
                     this.props.history.push('/home');
                   }
            

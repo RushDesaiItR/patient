@@ -50,7 +50,7 @@ export default class Register extends Component {
                       localStorage.setItem("projectToken",res.data.data[0].firstName +" "+res.data.data[0].lastName)
                       localStorage.setItem("firstName",res.data.data[0].firstName)
                       localStorage.setItem("lastName",res.data.data[0].lastName)
-                      
+                      localStorage.setItem("email",res.data.data[0].email )
                      this.props.history.push('/home');
                  }
 

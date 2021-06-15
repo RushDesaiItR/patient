@@ -34,6 +34,7 @@ export default function FullWidthGrid({ childData }) {
   const [selectedTime, setselectedTime] = React.useState();
   const [firstName, setFirstName] = React.useState()
   const [lastName, setLastName] = React.useState()
+  const [email, setEmail] = React.useState()
   const [address, setAddress] = React.useState()
   const [city, setCity] = React.useState()
   const [doctor, setDoctor] = React.useState()
@@ -93,6 +94,7 @@ export default function FullWidthGrid({ childData }) {
           patientName: firstName + " " + lastName,
           Time: moment(selectedTime).format("hh:mm:ss a"),
           Date: moment(selectedDate).format("DD/MM/YYYY"),
+          email:email
         }
       })
         .then(data => {
@@ -117,7 +119,12 @@ export default function FullWidthGrid({ childData }) {
   };
   React.useEffect(() => {
 
-
+    let firstName = localStorage.getItem("firstName")
+    setFirstName(firstName)
+    let lastName = localStorage.getItem("lastName")
+    setLastName(lastName)
+    let email = localStorage.getItem("email")
+    setEmail(email)
     setTimeout(() => {
       setLoader(false)
     }, 3000)
@@ -159,14 +166,16 @@ export default function FullWidthGrid({ childData }) {
 
               <div style={{ padding: "10px" }}>
                 <div className="row-form">
-                  <input type="text" onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" className="form-control" />
-                  <input type="text" onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" className="form-control" />
+                  <input type="text" value={firstName} disabled onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" className="form-control" />
+                  <input type="text" value={lastName} disabled onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" className="form-control" />
                 </div>
                 <div className="row-form">
                   <input type="text" onChange={(e) => setAddress(e.target.value)} placeholder="Address" className="form-control" />
                   <input type="text" onChange={(e) => setCity(e.target.value)} placeholder="City" className="form-control" />
                 </div>
-
+                <div className="row-form">
+                     <input type="text" value={email} disabled onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="form-control" />
+                </div>
                 <div className="row-form">
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid container justify="space-around">
